@@ -9,6 +9,9 @@ This repository contains demonstrates how to use PM2 for process management and 
 - PM2
 - Nginx
 
+#### Recorded terminal sessions
+[![Recorded terminal sessions](https://asciinema.org/a/598343.svg)](https://asciinema.org/a/598343)
+
 ## Step 1: Connect to the Server
 To access the server remotely:
 Open a terminal or command prompt on your local machine.
