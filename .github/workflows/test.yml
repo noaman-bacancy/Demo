@@ -16,3 +16,11 @@ jobs:
 
     - name: echo
       run: echo $GITHUB_ENV && echo $GITHUB_HEAD_REF
+    - name: Determine Changed Tools
+      id: changed_tools
+      run: |
+        echo "{name}={value}" >> $GITHUB_STATE
+        echo "{name}={value}" >> $GITHUB_OUTPUT
+
+        echo $GITHUB_STATE
+        echo $GITHUB_OUTPUT
