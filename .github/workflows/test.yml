@@ -11,8 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set branch name
-      run: echo "BRANCH_NAME=$(echo ${{ github.ref }} | sed 's/refs\/heads\///')" >> $GITHUB_ENV
 
-    - name: echo
-      run: echo $GITHUB_ENV
+    - name: Determine Changed Tools
+      id: changed_tools
+      run: |
+        echo "{name}={value}" >> $GITHUB_STATE
+        echo "{name}={value}" >> $GITHUB_OUTPUT
+
+        echo $GITHUB_STATE
+        echo $GITHUB_OUTPUT
