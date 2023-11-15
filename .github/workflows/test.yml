@@ -4,10 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       parameter_choice:
-        description: 'Choose a parameter (OptionA or OptionB)'
+        description: 'Choose a parameter (OptionA, OptionB, OptionC, or OptionD)'
         required: true
         #default: 'OptionA'  # Default value in case the user doesn't provide one
-        
 
 jobs:
   build:
@@ -19,6 +18,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+
+      - name: Validate Parameter
+        run: |
+          valid_options=("OptionA" "OptionB" "OptionC" "OptionD")
+          if [[ ! " ${valid_options[@]} " =~ " ${PARAMETER_CHOICE} " ]]; then
+            echo "Invalid option. Please choose from: ${valid_options[@]}"
+            exit 1
+          fi
 
       - name: Build
         run: |
