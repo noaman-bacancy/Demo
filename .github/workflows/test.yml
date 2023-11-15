@@ -1,18 +1,28 @@
-name: test
+name: Parameterized Build Workflow
 
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
+  workflow_dispatch:
+    inputs:
+      parameter_one:
+        description: 'Parameter One'
+        required: true
+      parameter_two:
+        description: 'Parameter Two'
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Set branch name
-      run: echo "BRANCH_NAME=$(echo ${{ github.ref }} | sed 's/refs\/heads\///')" >> $GITHUB_ENV
+    env:
+      PARAMETER_ONE: ${{ github.event.inputs.parameter_one }}
+      PARAMETER_TWO: ${{ github.event.inputs.parameter_two }}
 
-    - name: echo
-      run: echo $GITHUB_ENV
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          echo "Building with PARAMETER_ONE=${PARAMETER_ONE} and PARAMETER_TWO=${PARAMETER_TWO}"
+          # Your build steps here
