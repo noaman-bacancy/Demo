@@ -3,20 +3,18 @@ name: Parameterized Build Workflow
 on:
   workflow_dispatch:
     inputs:
-      parameter_one:
-        description: 'Parameter One'
+      parameter_choice:
+        description: 'Choose a parameter (OptionA or OptionB)'
         required: true
-      parameter_two:
-        description: 'Parameter Two'
-        required: true
+        #default: 'OptionA'  # Default value in case the user doesn't provide one
+        
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     env:
-      PARAMETER_ONE: ${{ github.event.inputs.parameter_one }}
-      PARAMETER_TWO: ${{ github.event.inputs.parameter_two }}
+      PARAMETER_CHOICE: ${{ github.event.inputs.parameter_choice }}
 
     steps:
       - name: Checkout Repository
@@ -24,5 +22,5 @@ jobs:
 
       - name: Build
         run: |
-          echo "Building with PARAMETER_ONE=${PARAMETER_ONE} and PARAMETER_TWO=${PARAMETER_TWO}"
+          echo "Building with PARAMETER_CHOICE=${PARAMETER_CHOICE}"
           # Your build steps here
