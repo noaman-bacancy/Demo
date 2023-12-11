@@ -29,7 +29,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: test
-        run: gh repo clone noaman-bacancy/time_tracker
+        run: git clone https://noaman-bacancy/time_tracker.git
         env:
            GH_TOKEN: ${{ github.token }}
         
