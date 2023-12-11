@@ -11,14 +11,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      pull-requests: write 
+      issues: read
+      packages: none
+  
     env:
       PARAMETER_CHOICE: ${{ github.event.inputs.parameter_choice }}
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
+        
+      - name: Create a Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
+      - name: test
+        run: gh repo clone noaman-bacancy/time_tracker
+        
       - name: Validate Parameter
         run: |
           valid_options=("OptionA" "OptionB" "OptionC" "OptionD")
