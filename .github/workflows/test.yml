@@ -31,7 +31,7 @@ jobs:
       - name: test
         run: git clone https://noaman-bacancy/time_tracker.git
         env:
-           repo-token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         
       - name: Validate Parameter
         run: |
