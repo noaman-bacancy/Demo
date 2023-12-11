@@ -28,17 +28,12 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Clone other repository
-        uses: actions/checkout@v3
-        with:
-          repository: 'noaman-bacancy/testsa.git'
-          path: 'main'
-          token: ${{ github.token }}
+
           
-      # - name: test
-      #   run: git clone https://noaman-bacancy:${{ secrets.GITHUB_TOKEN }}@github.com/noaman-bacancy/testsa.git
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
+      - name: test
+        run: git clone https://noaman-bacancy:${{ secrets.GITHUB_TOKEN }}@github.com/noaman-bacancy/testsa.git
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         
       - name: Validate Parameter
         run: |
