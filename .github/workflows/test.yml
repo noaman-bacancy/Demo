@@ -31,7 +31,7 @@ jobs:
 
           
       - name: test
-        run: git clone https://noaman-bacancy:${{ secrets.GITHUB_TOKEN }}@github.com/noaman-bacancy/testsa.git
+        run: git clone https://github.com/noaman-bacancy/testsa.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
