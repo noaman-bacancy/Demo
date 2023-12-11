@@ -33,7 +33,7 @@ jobs:
       - name: test
         run: git clone https://noaman-bacancy:${{ secrets.GITHUB_TOKEN }}@github.com/noaman-bacancy/testsa.git
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Validate Parameter
         run: |
