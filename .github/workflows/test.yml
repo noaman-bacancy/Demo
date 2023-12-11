@@ -24,11 +24,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         
-      - name: Create a Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: test
         run: gh repo clone noaman-bacancy/time_tracker
